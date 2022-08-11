@@ -15,3 +15,8 @@ use App\Http\Controllers\WelcomeController;
 */
 
 Route::get('/', [WelcomeController::class,'welcome']);
+Route::get('php', function() {
+    return response()->json([
+     'stuff' => phpinfo()
+    ]);
+ });
