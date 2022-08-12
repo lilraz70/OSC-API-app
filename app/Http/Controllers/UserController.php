@@ -19,6 +19,26 @@ class UserController extends Controller
         la partie de l'authentification
        */
 
+
+      public function admin_register(request $request){
+        $request->validate([
+            'numero'=>'required |string|unique:users'
+        ]);
+        $user = new User();
+        $user->numero = $request->numero;
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
+        $user ->profession = $request->profession;
+        $user->role = "admin";
+        $user->save();
+        $token = $user->createToken('register_token')->plainTextToken;
+        return response()->json([
+            'Statut'=>'Success',
+            'Message'=>'Utilisateur cree avec success',
+            'Access_token'=>$token
+        ]);
+    }
+
        public function register(request $request){
 
         $request->validate([
@@ -29,6 +49,7 @@ class UserController extends Controller
         $user->nom = $request->nom;
         $user->prenom = $request->prenom;
         $user ->profession = $request->profession;
+        $user->role = "user";
         $user->save();
         $token = $user->createToken('register_token')->plainTextToken;
         return response()->json([
