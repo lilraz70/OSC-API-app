@@ -1,3 +1,6 @@
+<p> Bienvenu sur mon api , cet api permet de d'analyser un sol et fournir le type de culture aproprie ainsi que les modes d'emploi de ses cultures </p>
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
