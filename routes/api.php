@@ -22,6 +22,7 @@ Route::get('/', [WelcomeController::class,'welcome']); // welcome
        //   les routes  qui n'ont pas besoin d'authentification
 
           Route::post("user_register",[UserController::class,'register']);
+           Route::post("admin_register",[UserController::class,'adminregister']);
           Route::post("user_login",[UserController::class,'login']);
 // -----------------------------------------------------------------------------------
 

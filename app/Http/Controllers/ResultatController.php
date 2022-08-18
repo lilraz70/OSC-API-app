@@ -17,7 +17,7 @@ class ResultatController extends Controller
         $data = Resultat::all();
         if ($data){
             return response()->json([
-                "Statut"=>"Success",
+                'statut' => TRUE,
                 "Message"=>"Requete reussi",
                 "Data"=>$data
             ],200);
@@ -41,7 +41,7 @@ class ResultatController extends Controller
         $resultat->type_sol_id = $request->type_sol_id;
         $resultat->save();
         return response()->json([
-            "Statut"=>"Success",
+            'statut' => TRUE,
             "Message"=>"Resultat ajoute avec success",
             "Data"=>$resultat
         ],404);
@@ -60,13 +60,13 @@ class ResultatController extends Controller
 
         if($data){
             return response()->json([
-                "Statut"=>"Success",
+                'statut' => TRUE,
                 "Message"=>"requette reussi",
                 "Data"=>$data
             ],200);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"Resultat introuvable"
             ],404);
         }
@@ -87,13 +87,13 @@ class ResultatController extends Controller
         if ($data){
             $data -> update($request->all());
             return response()->json([
-                "Statut"=>"True",
+                'statut' => TRUE,
                 "Message"=>"Mise a jour reussi",
                 "Data"=>$data
             ],200);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"Resultat introuvable"
             ],404);
         }
@@ -112,12 +112,12 @@ class ResultatController extends Controller
         if ($data){
             Resultat::destroy($id);
             return response()->json([
-                "Statut"=>"True",
+                'statut' => TRUE,
                 "Message"=>"Resultat supprimer avec success",
             ],200);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"Resultat introuvable"
             ],404);
         }

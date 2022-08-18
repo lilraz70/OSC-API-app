@@ -22,7 +22,7 @@ class EnsureUserHasRole
          return $next($request);
         else {
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>False,
                 "Message"=>"Desole vous n'avez pas l'autorisation"
             ]);
         }

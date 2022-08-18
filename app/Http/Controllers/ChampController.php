@@ -17,7 +17,7 @@ class ChampController extends Controller
     {
         $data = Champ::all();
         return response()->json([
-            'statut' => 'SUCCES',
+            'statut' => TRUE,
             'type' =>   $data,
         ]);
     }
@@ -48,7 +48,7 @@ class ChampController extends Controller
     //         "user_id"=>$request->$id
     //    ]);
         return response()->json([
-            'Statut'=>'Success',
+            'statut' => TRUE,
             'Message'=>'Champ cree avec success',
         ],200);
     }
@@ -66,13 +66,13 @@ class ChampController extends Controller
         if ($data){
             return response()->json(
                 [
-                    "Statut"=>"Success",
+                    'statut' => TRUE,
                     "Message"=>"Requete reussi",
                     "Data"=>$data
                 ]);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"Champ introuvable"
             ],404);
         }
@@ -92,13 +92,13 @@ class ChampController extends Controller
         if ($data){
             $data->update($request->all());
             return response()->json([
-                    "Statut"=>"Success",
+                'statut' => TRUE,
                     "Message"=>"Requete reussi",
                     "Data"=>$data
                 ]);
         }else {
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"Champ introuvable"
             ],404);
         }
@@ -116,12 +116,12 @@ class ChampController extends Controller
         if ($data){
             Champ::destroy($id);
             return response()->json([
-                "Statut"=>"Success",
+                'statut' => TRUE,
                 "Message"=>"Champ supprimer avec success"
             ]);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"Champ introuvable"
             ],404);
         }

@@ -20,7 +20,7 @@ class UserController extends Controller
        */
 
 
-      public function admin_register(request $request){
+      public function adminregister(request $request){
         $request->validate([
             'numero'=>'required |string|unique:users'
         ]);
@@ -33,9 +33,10 @@ class UserController extends Controller
         $user->save();
         $token = $user->createToken('register_token')->plainTextToken;
         return response()->json([
-            'Statut'=>'Success',
+            'Statut'=>TRUE,
             'Message'=>'Utilisateur cree avec success',
-            'Access_token'=>$token
+            'Access_token'=>$token,
+            'Data'=>$user
         ]);
     }
 
@@ -53,9 +54,10 @@ class UserController extends Controller
         $user->save();
         $token = $user->createToken('register_token')->plainTextToken;
         return response()->json([
-            'Statut'=>'Success',
+            'Statut'=>TRUE,
             'Message'=>'Utilisateur cree avec success',
-            'Access_token'=>$token
+            'Access_token'=>$token,
+            'Data'=>$user
         ]);
 
 
@@ -73,13 +75,14 @@ class UserController extends Controller
             // generation du token
            $token= $user -> createToken('login_token')->plainTextToken;
             return response()->json(
-                [ 'Statut'=>'Sucess',
+                [ 'Statut'=>TRUE,
                 'Message'=>'Connexion reussi',
-                'Access_token'=>$token
+                'Access_token'=>$token,
+                'Data'=>$user
                 ],404);
         }else{
             return response()->json(
-                [ 'Statut'=>'False',
+                [ 'Statut'=>False,
                 'Message'=>'Utilisateur introuvable'
                 ],404);
         }
@@ -87,7 +90,7 @@ class UserController extends Controller
     }
     public function profile(request $request){
         return response()->json(
-            [ 'Statut'=>'Success',
+            [ 'Statut'=>TRUE,
             'Message'=>'Informations de profile',
             'Data'=>Auth::User()
             ]);
@@ -95,7 +98,7 @@ class UserController extends Controller
     public function logout(request $request){
         Auth::User()->Tokens()->delete();
         return response()->json(
-            [ 'Statut'=>'Success',
+            [ 'Statut'=>TRUE,
             'Message'=>'Deconnexion reussi'
             ]);
     }
@@ -109,8 +112,8 @@ class UserController extends Controller
     {
         $data = User::all();
         return response()->json([
-            'statut' => 'SUCCES',
-            'type' =>   $data,
+            'Statut'=>TRUE,
+            'type' =>$data,
         ]);
     }
 
@@ -137,13 +140,13 @@ class UserController extends Controller
         if ($data){
             return response()->json(
                 [
-                    "Statut"=>"Success",
+                    'Statut'=>TRUE,
                     "Message"=>"Requete reussi",
                     "Data"=>$data
                 ]);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>False,
                 "Message"=>"Utilisateur introuvable"
             ]);
 
@@ -165,13 +168,13 @@ class UserController extends Controller
         if ($data){
             $data->update($request->all());
             return response()->json([
-                    "Statut"=>"Success",
+                'Statut'=>TRUE,
                     "Message"=>"Requete reussi",
                     "Data"=>$data
                 ]);
         }else {
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"Utilisateur introuvable"
             ]);
         }
@@ -189,12 +192,12 @@ class UserController extends Controller
         if ($data){
             User::destroy($id);
             return response()->json([
-                "Statut"=>"Success",
+                'Statut'=>TRUE,
                 "Message"=>"Utilisateur supprimer avec success"
             ]);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"Utilisateur introuvable"
             ]);
         }

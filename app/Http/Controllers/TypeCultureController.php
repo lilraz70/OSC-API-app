@@ -16,8 +16,8 @@ class TypeCultureController extends Controller
     {
         $data = TypeCulture::all();
         return response()->json([
-            'statut' => 'SUCCES',
-            'type' =>   $data,
+            'statut' => TRUE,
+            'Data' =>   $data,
         ],200);
     }
 
@@ -45,7 +45,7 @@ class TypeCultureController extends Controller
     //         "user_id"=>$request->$id
     //    ]);
         return response()->json([
-            'Statut'=>'Success',
+            'statut' => TRUE,
             'Message'=>'TypeCulture cree avec success',
             'Data'=>$TypeCulture
         ],200);
@@ -64,13 +64,13 @@ class TypeCultureController extends Controller
         if ($data){
             return response()->json(
                 [
-                    "Statut"=>"Success",
+                    'statut' => TRUE,
                     "Message"=>"Requete reussi",
                     "Data"=>$data
                 ],200);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"TypeCulture introuvable"
             ],404);
         }
@@ -90,13 +90,13 @@ class TypeCultureController extends Controller
         if ($data){
             $data->update($request->all());
             return response()->json([
-                    "Statut"=>"Success",
+                'statut' => TRUE,
                     "Message"=>"Requete reussi",
                     "Data"=>$data
                 ],200);
         }else {
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"TypeCulture introuvable"
             ],404);
         }
@@ -114,12 +114,12 @@ class TypeCultureController extends Controller
         if ($data){
             TypeCulture::destroy($id);
             return response()->json([
-                "Statut"=>"Success",
+                'statut' => TRUE,
                 "Message"=>"TypeSol supprimer avec success"
             ],200);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"TypeCulture introuvable"
             ],404);
         }

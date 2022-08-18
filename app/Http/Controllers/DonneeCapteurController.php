@@ -16,7 +16,7 @@ class DonneeCapteurController extends Controller
     {
         $data = DonneeCapteur::all();
         return response()->json([
-            'Statut' => 'Success',
+            'statut' => TRUE,
             'Message' => 'Requete reussi',
             'Data' => $data
         ]);
@@ -52,7 +52,7 @@ class DonneeCapteurController extends Controller
         $donneeCapteur->Champ_id = $request->champ_id;
         $donneeCapteur->save();
         return response()->json([
-            'Statut' => 'Succes',
+            'statut' => TRUE,
             'Message' => 'Requete reussi',
             'Data' => $donneeCapteur
         ]);
@@ -70,13 +70,13 @@ class DonneeCapteurController extends Controller
 
         if ($data){
             return response()->json([
-                'Statut' => 'Success',
+                'statut' => TRUE,
                 'Message' => 'Requete reussi',
                 'Data' => $data
             ],200);
         }else{
             return response()->json([
-                'Statut' => 'False',
+                'Statut' => FALSE,
                 'Message' => 'Requete non reussi',
             ],404);
 
@@ -107,13 +107,13 @@ class DonneeCapteurController extends Controller
         if ($data){
             $data -> update($request->all());
             return response()->json([
-                'Statut' => 'Success',
+                'statut' => TRUE,
                 'Message' => 'Requete reussi',
                 'Data' => $data
             ],200);
         }else{
             return response()->json([
-                'Statut' => 'False',
+                'Statut' => FALSE,
                 'Message' => 'Requete non reussi',
             ],404);
 
@@ -133,7 +133,7 @@ class DonneeCapteurController extends Controller
         if ($data){
             DonneeCapteur::destroy($id);
             return response()->json([
-                "Statut"=>"True",
+                'statut' => TRUE,
                 "Message"=>"Donnee Capteur supprimer"
             ],200);
         }else{

@@ -11,8 +11,8 @@ class TypeSolTypeCultureController extends Controller
     {
         $data = TypeSolTypeCulture::all();
         return response()->json([
-            'statut' => 'SUCCES',
-            'type' =>   $data,
+            'Statut'=>TRUE,
+            'type' =>$data,
         ],200);
     }
 
@@ -40,7 +40,7 @@ class TypeSolTypeCultureController extends Controller
     //         "user_id"=>$request->$id
     //    ]);
         return response()->json([
-            'Statut'=>'Success',
+            'Statut'=>TRUE,
             'Message'=>'TypeSolTypeCulture cree avec success',
             'Data'=>$TypeSolTypeCulture
         ],200);
@@ -59,13 +59,13 @@ class TypeSolTypeCultureController extends Controller
         if ($data){
             return response()->json(
                 [
-                    "Statut"=>"Success",
+                    'Statut'=>TRUE,
                     "Message"=>"Requete reussi",
                     "Data"=>$data
                 ]);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"TypeSolTypeCulture introuvable"
             ],404);
         }
@@ -77,13 +77,13 @@ public function update(Request $request,  $id)
         if ($data){
             $data -> update($request->all());
             return response()->json([
-                "Statut"=>"True",
+                'Statut'=>TRUE,
                 "Message"=>"Mise a jour reussi",
                 "Data"=>$data
             ],200);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"TypeSolTypeCultureintrouvable"
             ],404);
         }
@@ -102,12 +102,12 @@ public function update(Request $request,  $id)
         if ($data){
             TypeSolTypeCulture::destroy($id);
             return response()->json([
-                "Statut"=>"True",
+                'Statut'=>TRUE,
                 "Message"=>"TypeSolTypeCulture supprimer avec success",
             ],200);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"TypeSolTypeCultureintrouvable"
             ],404);
         }

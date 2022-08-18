@@ -11,7 +11,7 @@ class TypeSolController extends Controller
     {
         $data = TypeSol::all();
         return response()->json([
-            'statut' => 'SUCCES',
+            'statut' => TRUE,
             'type' =>   $data,
         ],200);
     }
@@ -40,7 +40,7 @@ class TypeSolController extends Controller
     //         "user_id"=>$request->$id
     //    ]);
         return response()->json([
-            'Statut'=>'Success',
+            'statut' => TRUE,
             'Message'=>'TypeSol cree avec success',
             'Data'=>$TypeSol
         ],200);
@@ -59,13 +59,13 @@ class TypeSolController extends Controller
         if ($data){
             return response()->json(
                 [
-                    "Statut"=>"Success",
+                    'statut' => TRUE,
                     "Message"=>"Requete reussi",
                     "Data"=>$data
                 ]);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"TypeSol introuvable"
             ],404);
         }
@@ -85,13 +85,13 @@ class TypeSolController extends Controller
         if ($data){
             $data->update($request->all());
             return response()->json([
-                    "Statut"=>"Success",
+                'statut' => TRUE,
                     "Message"=>"Requete reussi",
                     "Data"=>$data
                 ]);
         }else {
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"TypeSol introuvable"
             ],404);
         }
@@ -109,12 +109,12 @@ class TypeSolController extends Controller
         if ($data){
             TypeSol::destroy($id);
             return response()->json([
-                "Statut"=>"Success",
+                'statut' => TRUE,
                 "Message"=>"TypeSol supprimer avec success"
             ]);
         }else{
             return response()->json([
-                "Statut"=>"False",
+                "Statut"=>FALSE,
                 "Message"=>"TypeSol introuvable"
             ],404);
         }
