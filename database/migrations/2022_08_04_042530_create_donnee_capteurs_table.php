@@ -19,9 +19,6 @@ return new class extends Migration
             $table->string('p');
             $table->string('k');
             $table->string('ph');
-            $table->string('ec');
-            $table->string('temperature');
-            $table->string('humidite');
             $table->foreignId('champ_id')->constrained()->oneDelete('cascade');
             $table->timestamps();
         });

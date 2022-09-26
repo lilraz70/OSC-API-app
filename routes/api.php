@@ -9,6 +9,7 @@ use App\Http\Controllers\ChampController;
 use App\Http\Controllers\TypeSolController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ResultatController;
+use App\Http\Controllers\TraitementController;
 use App\Http\Controllers\TypeCultureController;
 use App\Http\Controllers\DonneeCapteurController;
 
@@ -118,5 +119,9 @@ Route::delete('supprimer_resultat/{id}',[ResultatController::class,'destroy']); 
     Route::get('detail_resultat/{id}',[ResultatController::class,'show']);  //voir  1 seul Resultat
     Route::put('maj_resultat/{id}',[ResultatController::class,'update']); // MAJ un Resultat
     Route::delete('supprimer_resultat/{id}',[ResultatController::class,'destroy']); // supprimer un Resultat
+
+                          ///   PARTIE TRAITEMENT
+   
 });
 // ---------------------------------------------------------------------------------------------
+  Route::get('traitement',[TraitementController::class,'traitement']);

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('type_sol_type_cultures', function (Blueprint $table) {
+        Schema::create('type_culture_type_sol', function (Blueprint $table) {
             $table->id();
             $table->foreignId('type_sol_id')->constrained()->onDelete('cascade');
             $table->foreignID('type_culture_id')->constrained()->onDelete('cascade');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_sol_type_cultures');
+        Schema::dropIfExists('type_cultures_type_sol');
     }
 };
