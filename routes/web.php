@@ -22,4 +22,4 @@ Route::get('php', function() {
     ]);
  });
 
- Route::get('test', [ProjectController::class, 'test'])->name('test');
+//  Route::get('test', [ProjectController::class, 'test'])->name('test');
